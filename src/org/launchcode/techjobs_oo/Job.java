@@ -15,6 +15,7 @@ public class Job {
 
     public Job() {
         this.id = nextId;
+        nextId ++;
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -24,6 +25,54 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        String na;
+        String e;
+        String l;
+        String p;
+        String c;
+        Integer areNull = 0;
+
+        if (this.name.isEmpty() || this.name == null){
+            na = "Data not available";
+            areNull+=1;
+        } else {
+            na = name.toString();
+        }
+        if (this.employer.getValue().isEmpty() || this.employer.getValue()== null){
+            e = "Data not available";
+            areNull+=1;
+        } else {
+            e = employer.toString();
+        }
+        if (this.location.getValue().isEmpty() || this.location.getValue()== null){
+            l = "Data not available";
+            areNull+=1;
+        } else {
+            l = location.toString();
+        }
+        if (this.positionType.getValue().isEmpty() || this.positionType.getValue()==null){
+            p = "Data not available";
+            areNull+=1;
+        } else {
+            p = positionType.toString();
+        }
+        if (this.coreCompetency.getValue().isEmpty() || this.coreCompetency.getValue() == null){
+            c = "Data not available";
+            areNull+=1;
+        } else {
+            c = coreCompetency.toString();
+        }
+
+        if (areNull > 4){
+            return "OOPS! This job does not seem to exist.";
+        }
+
+
+        return "\nID: "+id+ "\nName: "+ na + "\nEmployer: "+e + "\nLocation: "+l+"\nPosition Type: "+p+ "\nCore Competency: "+c+"\n";
     }
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
